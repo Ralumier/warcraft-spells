@@ -1,0 +1,1122 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap");
+@font-face {
+  font-family: "morpheus";
+  src: url("../fonts/morpheus-webfont.woff2") format("woff2"), url("../fonts/morpheus-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.2; } }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+body {
+  background: black;
+  font-family: "Times New Roman", Times, serif; }
+
+#main {
+  display: grid;
+  grid-template-areas: "r h h c" "r ri ci c";
+  grid-template-columns: 220px 1fr 1fr 200px;
+  grid-template-rows: 64px auto; }
+  #main #header {
+    grid-area: h; }
+  #main #races {
+    grid-area: r; }
+  #main #race-info {
+    grid-area: ri; }
+  #main #classes {
+    grid-area: c; }
+  #main #class-info {
+    grid-area: ci; }
+
+#main {
+  background: url(../img/texture/back.jpg) center -200px repeat-y;
+  background-size: cover;
+  width: 90vw;
+  height: 100vh;
+  max-width: 90vw;
+  max-height: 100vh;
+  overflow: hidden;
+  margin: auto; }
+  #main #header {
+    text-align: center;
+    font-family: "morpheus";
+    color: black;
+    text-shadow: gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px;
+    font-size: 2.5rem;
+    align-self: center;
+    animation-name: header;
+    animation-duration: 2.5s; }
+
+@keyframes header {
+  from {
+    height: 100vh; }
+  to {
+    height: 64px; } }
+  #main #races {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 38px 38px 1fr;
+    grid-gap: 5px;
+    justify-items: center;
+    align-items: center; }
+    #main #races .button {
+      display: inline-block;
+      position: relative;
+      margin: 5px 6px 5px 6px; }
+      #main #races .button.darkened {
+        opacity: 0.3; }
+      #main #races .button .icon {
+        border: 2px solid #888;
+        border-top-color: #888888;
+        border-bottom-color: #555555;
+        border-left-color: #888888;
+        border-right-color: #555555;
+        border-radius: 50%; }
+      #main #races .button .caption {
+        display: inline-block;
+        position: absolute;
+        width: 140%;
+        left: -20%;
+        top: 80%;
+        text-align: center;
+        line-height: 0.9;
+        text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+        z-index: 1;
+        text-decoration: none;
+        color: #ffc700; }
+      #main #races .button .icon {
+        opacity: 0.75; }
+        #main #races .button .icon:hover {
+          border-color: gold;
+          opacity: 0.85; }
+      #main #races .button .caption {
+        display: none;
+        pointer-events: none; }
+      #main #races .button:hover .caption {
+        display: inline-block; }
+      #main #races .button[selected] .icon {
+        border-color: gold;
+        opacity: 1; }
+      #main #races .button[selected] .caption {
+        display: inline-block;
+        pointer-events: auto; }
+      #main #races .button[selected] a:hover {
+        text-decoration: underline;
+        text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+    #main #races > div {
+      display: flex;
+      flex-direction: column;
+      border: 2px solid rgba(255, 217, 0, 0.671);
+      border-top-color: rgba(255, 217, 0, 0.671);
+      border-bottom-color: rgba(153, 130, 0, 0.671);
+      border-left-color: rgba(255, 217, 0, 0.671);
+      border-right-color: rgba(153, 130, 0, 0.671);
+      border-radius: 7px;
+      margin: 2px; }
+    #main #races-alliance-core {
+      background-color: #15193f;
+      order: 1;
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      justify-self: start;
+      align-self: end; }
+    #main #races-alliance-allied {
+      background-color: #15193f;
+      order: 3;
+      grid-column: 1;
+      grid-row: 1 / span 1;
+      justify-self: end;
+      align-self: end; }
+    #main #races-horde-core {
+      background-color: #55050b;
+      order: 2;
+      grid-column: 2;
+      grid-row: 3 / span 2;
+      justify-self: start;
+      align-self: start; }
+    #main #races-horde-allied {
+      background-color: #55050b;
+      order: 5;
+      grid-column: 1;
+      grid-row: 4 / span 1;
+      justify-self: end;
+      align-self: start; }
+    #main #races-neutral {
+      background-color: #5f5f20;
+      order: 4;
+      grid-column: 1;
+      grid-row: 2 / span 2;
+      justify-self: end; }
+  #main #race-info {
+    box-shadow: inset 2px 2px 4px 5px rgba(0, 0, 0, 0.3);
+    border-top: 2px rgba(7, 6, 5, 0.274) solid;
+    border-right: 2px rgba(7, 6, 5, 0.274) solid;
+    border-left: 2px rgba(7, 6, 5, 0.274) solid;
+    padding-top: 7px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: rgba(255, 174, 0, 0.048);
+    transition: box-shadow 1s ease-in 2s, background-color 1s ease-in 2.5s;
+    height: 97%;
+    max-height: 97%; }
+    #main #race-info .button {
+      display: inline-block;
+      position: relative; }
+      #main #race-info .button.darkened {
+        opacity: 0.3; }
+      #main #race-info .button .icon {
+        border: 2px solid #888;
+        border-top-color: #888888;
+        border-bottom-color: #555555;
+        border-left-color: #888888;
+        border-right-color: #555555;
+        border-radius: 7px; }
+      #main #race-info .button .caption {
+        display: inline-block;
+        position: absolute;
+        width: 140%;
+        left: -20%;
+        top: 80%;
+        text-align: center;
+        line-height: 0.9;
+        text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+        z-index: 1;
+        text-decoration: none;
+        color: #ffc700; }
+    #main #race-info * {
+      animation-name: fadeIn;
+      animation-duration: 0.75s; }
+    #main #race-info-header {
+      margin-top: 10px;
+      font-family: "morpheus";
+      display: flex;
+      height: 60px;
+      align-items: center;
+      justify-items: center;
+      align-content: center;
+      justify-content: space-evenly; }
+      #main #race-info-header img {
+        border: 2px solid gold;
+        border-top-color: gold;
+        border-bottom-color: #998100;
+        border-left-color: gold;
+        border-right-color: #998100;
+        border-radius: 6px; }
+      #main #race-info-header a {
+        display: inline-block;
+        border: 2px solid gold;
+        border-top-color: gold;
+        border-bottom-color: #998100;
+        border-left-color: gold;
+        border-right-color: #998100;
+        border-radius: 6px;
+        border-radius: 10%;
+        padding: 0 40px 5px 40px;
+        margin: 20px;
+        background: rgba(128, 128, 128, 0.1);
+        backdrop-filter: blur(10px);
+        text-decoration: none;
+        color: black;
+        text-shadow: gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px; }
+        #main #race-info-header a:hover {
+          text-decoration: underline;
+          text-shadow: #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px; }
+    #main #race-info-spells {
+      display: flex;
+      margin-top: 40px;
+      height: 700px;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      overflow-y: auto; }
+      #main #race-info-spells::-webkit-scrollbar {
+        width: 10px;
+        /* width of the entire scrollbar */ }
+      #main #race-info-spells::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.048);
+        /* color of the tracking area */ }
+      #main #race-info-spells::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        /* roundness of the scroll thumb */
+        background-color: #1a1600;
+        /* color of the scroll thumb */
+        box-shadow: inset 0px 0px 10px 1px gold; }
+      #main #race-info-spells .racial {
+        display: flex;
+        margin-left: 10px;
+        margin-bottom: 20px; }
+        #main #race-info-spells .racial .details {
+          display: inline-block;
+          background: #080d21;
+          color: #fff;
+          font-family: Arial, Helvetica, sans-serif;
+          line-height: 1.5;
+          margin-left: 10px;
+          padding: 7px;
+          border: 2px solid #888;
+          border-top-color: #888888;
+          border-bottom-color: #555555;
+          border-left-color: #888888;
+          border-right-color: #555555;
+          border-radius: 7px;
+          width: 360px; }
+          #main #race-info-spells .racial .details .name {
+            font-size: 1.2rem;
+            color: gold;
+            text-decoration: none; }
+            #main #race-info-spells .racial .details .name:hover {
+              color: gold;
+              text-decoration: underline;
+              text-shadow: rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px; }
+          #main #race-info-spells .racial .details .type {
+            font-style: italic; }
+            #main #race-info-spells .racial .details .type[type="active"] {
+              color: #0a0; }
+            #main #race-info-spells .racial .details .type[type="passive"] {
+              color: #999; }
+          #main #race-info-spells .racial .details .description {
+            color: #fff; }
+  #main #classes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center; }
+    #main #classes #class-group {
+      justify-self: right;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid rgba(255, 217, 0, 0.671);
+      border-top-color: rgba(255, 217, 0, 0.671);
+      border-bottom-color: rgba(153, 130, 0, 0.671);
+      border-left-color: rgba(255, 217, 0, 0.671);
+      border-right-color: rgba(153, 130, 0, 0.671);
+      border-radius: 7px;
+      background-color: #343434; }
+      #main #classes #class-group .button {
+        display: inline-block;
+        position: relative;
+        margin: 5px 6px 3px 6px !important; }
+        #main #classes #class-group .button.darkened {
+          opacity: 0.3; }
+        #main #classes #class-group .button .icon {
+          border: 2px solid #888;
+          border-top-color: #888888;
+          border-bottom-color: #555555;
+          border-left-color: #888888;
+          border-right-color: #555555;
+          border-radius: 50%; }
+        #main #classes #class-group .button .caption {
+          display: inline-block;
+          position: absolute;
+          width: 140%;
+          left: -20%;
+          top: 80%;
+          text-align: center;
+          line-height: 0.9;
+          text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+          z-index: 1;
+          text-decoration: none;
+          color: #ffc700; }
+        #main #classes #class-group .button .icon {
+          opacity: 0.75; }
+          #main #classes #class-group .button .icon:hover {
+            border-color: gold;
+            opacity: 0.85; }
+        #main #classes #class-group .button .caption {
+          display: none;
+          pointer-events: none; }
+        #main #classes #class-group .button:hover .caption {
+          display: inline-block; }
+        #main #classes #class-group .button[selected] .icon {
+          border-color: gold;
+          opacity: 1; }
+        #main #classes #class-group .button[selected] .caption {
+          display: inline-block;
+          pointer-events: auto; }
+        #main #classes #class-group .button[selected] a:hover {
+          text-decoration: underline;
+          text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+    #main #classes #class-filters {
+      justify-self: left; }
+      #main #classes #class-filters:before {
+        content: "Filters";
+        display: inline-block;
+        width: 75px;
+        margin-bottom: 3px;
+        font-family: "morpheus";
+        font-size: 1.4rem;
+        text-align: center;
+        color: black;
+        text-shadow: gold 0px 0px 10px, gold 0px 0px 10px, gold 0px 0px 10px, gold 0px 0px 10px, gold 0px 0px 10px, gold 0px 0px 10px; }
+      #main #classes #class-filters > div {
+        display: flex;
+        flex-direction: column;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        border: 2px solid rgba(255, 217, 0, 0.671);
+        border-top-color: rgba(255, 217, 0, 0.671);
+        border-bottom-color: rgba(153, 130, 0, 0.671);
+        border-left-color: rgba(255, 217, 0, 0.671);
+        border-right-color: rgba(153, 130, 0, 0.671);
+        border-radius: 7px;
+        background-color: #474747; }
+      #main #classes #class-filters #class-roles .button[role="tank"] {
+        display: inline-block;
+        position: relative;
+        margin: 5px 6px 3px 6px; }
+        #main #classes #class-filters #class-roles .button[role="tank"].darkened {
+          opacity: 0.3; }
+        #main #classes #class-filters #class-roles .button[role="tank"] .icon {
+          border: 2px solid #888;
+          border-top-color: #888888;
+          border-bottom-color: #555555;
+          border-left-color: #888888;
+          border-right-color: #555555;
+          border-radius: 50%; }
+        #main #classes #class-filters #class-roles .button[role="tank"] .caption {
+          display: inline-block;
+          position: absolute;
+          width: 140%;
+          left: -20%;
+          top: 80%;
+          text-align: center;
+          line-height: 0.9;
+          text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+          z-index: 1;
+          text-decoration: none;
+          color: #ffc700; }
+        #main #classes #class-filters #class-roles .button[role="tank"] .icon {
+          opacity: 0.75; }
+          #main #classes #class-filters #class-roles .button[role="tank"] .icon:hover {
+            border-color: rgba(0, 85, 255, 0.67);
+            opacity: 0.85; }
+        #main #classes #class-filters #class-roles .button[role="tank"] .caption {
+          display: none;
+          pointer-events: none; }
+        #main #classes #class-filters #class-roles .button[role="tank"]:hover .caption {
+          display: inline-block; }
+        #main #classes #class-filters #class-roles .button[role="tank"][selected] .icon {
+          border-color: rgba(0, 85, 255, 0.67);
+          opacity: 1; }
+        #main #classes #class-filters #class-roles .button[role="tank"][selected] .caption {
+          display: inline-block;
+          pointer-events: auto; }
+        #main #classes #class-filters #class-roles .button[role="tank"][selected] a:hover {
+          text-decoration: underline;
+          text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+      #main #classes #class-filters #class-roles .button[role="healer"] {
+        display: inline-block;
+        position: relative;
+        margin: 5px 6px 3px 6px; }
+        #main #classes #class-filters #class-roles .button[role="healer"].darkened {
+          opacity: 0.3; }
+        #main #classes #class-filters #class-roles .button[role="healer"] .icon {
+          border: 2px solid #888;
+          border-top-color: #888888;
+          border-bottom-color: #555555;
+          border-left-color: #888888;
+          border-right-color: #555555;
+          border-radius: 50%; }
+        #main #classes #class-filters #class-roles .button[role="healer"] .caption {
+          display: inline-block;
+          position: absolute;
+          width: 140%;
+          left: -20%;
+          top: 80%;
+          text-align: center;
+          line-height: 0.9;
+          text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+          z-index: 1;
+          text-decoration: none;
+          color: #ffc700; }
+        #main #classes #class-filters #class-roles .button[role="healer"] .icon {
+          opacity: 0.75; }
+          #main #classes #class-filters #class-roles .button[role="healer"] .icon:hover {
+            border-color: rgba(0, 255, 115, 0.67);
+            opacity: 0.85; }
+        #main #classes #class-filters #class-roles .button[role="healer"] .caption {
+          display: none;
+          pointer-events: none; }
+        #main #classes #class-filters #class-roles .button[role="healer"]:hover .caption {
+          display: inline-block; }
+        #main #classes #class-filters #class-roles .button[role="healer"][selected] .icon {
+          border-color: rgba(0, 255, 115, 0.67);
+          opacity: 1; }
+        #main #classes #class-filters #class-roles .button[role="healer"][selected] .caption {
+          display: inline-block;
+          pointer-events: auto; }
+        #main #classes #class-filters #class-roles .button[role="healer"][selected] a:hover {
+          text-decoration: underline;
+          text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+      #main #classes #class-filters #class-roles .button[role="melee"] {
+        display: inline-block;
+        position: relative;
+        margin: 5px 6px 3px 6px; }
+        #main #classes #class-filters #class-roles .button[role="melee"].darkened {
+          opacity: 0.3; }
+        #main #classes #class-filters #class-roles .button[role="melee"] .icon {
+          border: 2px solid #888;
+          border-top-color: #888888;
+          border-bottom-color: #555555;
+          border-left-color: #888888;
+          border-right-color: #555555;
+          border-radius: 50%; }
+        #main #classes #class-filters #class-roles .button[role="melee"] .caption {
+          display: inline-block;
+          position: absolute;
+          width: 140%;
+          left: -20%;
+          top: 80%;
+          text-align: center;
+          line-height: 0.9;
+          text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+          z-index: 1;
+          text-decoration: none;
+          color: #ffc700; }
+        #main #classes #class-filters #class-roles .button[role="melee"] .icon {
+          opacity: 0.75; }
+          #main #classes #class-filters #class-roles .button[role="melee"] .icon:hover {
+            border-color: rgba(255, 0, 0, 0.67);
+            opacity: 0.85; }
+        #main #classes #class-filters #class-roles .button[role="melee"] .caption {
+          display: none;
+          pointer-events: none; }
+        #main #classes #class-filters #class-roles .button[role="melee"]:hover .caption {
+          display: inline-block; }
+        #main #classes #class-filters #class-roles .button[role="melee"][selected] .icon {
+          border-color: rgba(255, 0, 0, 0.67);
+          opacity: 1; }
+        #main #classes #class-filters #class-roles .button[role="melee"][selected] .caption {
+          display: inline-block;
+          pointer-events: auto; }
+        #main #classes #class-filters #class-roles .button[role="melee"][selected] a:hover {
+          text-decoration: underline;
+          text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+      #main #classes #class-filters #class-roles .button[role="ranged"] {
+        display: inline-block;
+        position: relative;
+        margin: 5px 6px 3px 6px; }
+        #main #classes #class-filters #class-roles .button[role="ranged"].darkened {
+          opacity: 0.3; }
+        #main #classes #class-filters #class-roles .button[role="ranged"] .icon {
+          border: 2px solid #888;
+          border-top-color: #888888;
+          border-bottom-color: #555555;
+          border-left-color: #888888;
+          border-right-color: #555555;
+          border-radius: 50%; }
+        #main #classes #class-filters #class-roles .button[role="ranged"] .caption {
+          display: inline-block;
+          position: absolute;
+          width: 140%;
+          left: -20%;
+          top: 80%;
+          text-align: center;
+          line-height: 0.9;
+          text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+          z-index: 1;
+          text-decoration: none;
+          color: #ffc700; }
+        #main #classes #class-filters #class-roles .button[role="ranged"] .icon {
+          opacity: 0.75; }
+          #main #classes #class-filters #class-roles .button[role="ranged"] .icon:hover {
+            border-color: rgba(162, 0, 255, 0.67);
+            opacity: 0.85; }
+        #main #classes #class-filters #class-roles .button[role="ranged"] .caption {
+          display: none;
+          pointer-events: none; }
+        #main #classes #class-filters #class-roles .button[role="ranged"]:hover .caption {
+          display: inline-block; }
+        #main #classes #class-filters #class-roles .button[role="ranged"][selected] .icon {
+          border-color: rgba(162, 0, 255, 0.67);
+          opacity: 1; }
+        #main #classes #class-filters #class-roles .button[role="ranged"][selected] .caption {
+          display: inline-block;
+          pointer-events: auto; }
+        #main #classes #class-filters #class-roles .button[role="ranged"][selected] a:hover {
+          text-decoration: underline;
+          text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+      #main #classes #class-filters #class-gear {
+        flex-direction: column-reverse; }
+        #main #classes #class-filters #class-gear .button[data="Plate"] {
+          display: inline-block;
+          position: relative;
+          margin: 5px 6px 3px 6px; }
+          #main #classes #class-filters #class-gear .button[data="Plate"].darkened {
+            opacity: 0.3; }
+          #main #classes #class-filters #class-gear .button[data="Plate"] .icon {
+            border: 2px solid #888;
+            border-top-color: #888888;
+            border-bottom-color: #555555;
+            border-left-color: #888888;
+            border-right-color: #555555;
+            border-radius: 50%; }
+          #main #classes #class-filters #class-gear .button[data="Plate"] .caption {
+            display: inline-block;
+            position: absolute;
+            width: 140%;
+            left: -20%;
+            top: 80%;
+            text-align: center;
+            line-height: 0.9;
+            text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+            z-index: 1;
+            text-decoration: none;
+            color: #ffc700; }
+          #main #classes #class-filters #class-gear .button[data="Plate"] .icon {
+            opacity: 0.75; }
+            #main #classes #class-filters #class-gear .button[data="Plate"] .icon:hover {
+              border-color: #e4db5e;
+              opacity: 0.85; }
+          #main #classes #class-filters #class-gear .button[data="Plate"] .caption {
+            display: none;
+            pointer-events: none; }
+          #main #classes #class-filters #class-gear .button[data="Plate"]:hover .caption {
+            display: inline-block; }
+          #main #classes #class-filters #class-gear .button[data="Plate"][selected] .icon {
+            border-color: #e4db5e;
+            opacity: 1; }
+          #main #classes #class-filters #class-gear .button[data="Plate"][selected] .caption {
+            display: inline-block;
+            pointer-events: auto; }
+          #main #classes #class-filters #class-gear .button[data="Plate"][selected] a:hover {
+            text-decoration: underline;
+            text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+        #main #classes #class-filters #class-gear .button[data="Mail"] {
+          display: inline-block;
+          position: relative;
+          margin: 5px 6px 3px 6px; }
+          #main #classes #class-filters #class-gear .button[data="Mail"].darkened {
+            opacity: 0.3; }
+          #main #classes #class-filters #class-gear .button[data="Mail"] .icon {
+            border: 2px solid #888;
+            border-top-color: #888888;
+            border-bottom-color: #555555;
+            border-left-color: #888888;
+            border-right-color: #555555;
+            border-radius: 50%; }
+          #main #classes #class-filters #class-gear .button[data="Mail"] .caption {
+            display: inline-block;
+            position: absolute;
+            width: 140%;
+            left: -20%;
+            top: 80%;
+            text-align: center;
+            line-height: 0.9;
+            text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+            z-index: 1;
+            text-decoration: none;
+            color: #ffc700; }
+          #main #classes #class-filters #class-gear .button[data="Mail"] .icon {
+            opacity: 0.75; }
+            #main #classes #class-filters #class-gear .button[data="Mail"] .icon:hover {
+              border-color: #669aad;
+              opacity: 0.85; }
+          #main #classes #class-filters #class-gear .button[data="Mail"] .caption {
+            display: none;
+            pointer-events: none; }
+          #main #classes #class-filters #class-gear .button[data="Mail"]:hover .caption {
+            display: inline-block; }
+          #main #classes #class-filters #class-gear .button[data="Mail"][selected] .icon {
+            border-color: #669aad;
+            opacity: 1; }
+          #main #classes #class-filters #class-gear .button[data="Mail"][selected] .caption {
+            display: inline-block;
+            pointer-events: auto; }
+          #main #classes #class-filters #class-gear .button[data="Mail"][selected] a:hover {
+            text-decoration: underline;
+            text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+        #main #classes #class-filters #class-gear .button[data="Leather"] {
+          display: inline-block;
+          position: relative;
+          margin: 5px 6px 3px 6px; }
+          #main #classes #class-filters #class-gear .button[data="Leather"].darkened {
+            opacity: 0.3; }
+          #main #classes #class-filters #class-gear .button[data="Leather"] .icon {
+            border: 2px solid #888;
+            border-top-color: #888888;
+            border-bottom-color: #555555;
+            border-left-color: #888888;
+            border-right-color: #555555;
+            border-radius: 50%; }
+          #main #classes #class-filters #class-gear .button[data="Leather"] .caption {
+            display: inline-block;
+            position: absolute;
+            width: 140%;
+            left: -20%;
+            top: 80%;
+            text-align: center;
+            line-height: 0.9;
+            text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+            z-index: 1;
+            text-decoration: none;
+            color: #ffc700; }
+          #main #classes #class-filters #class-gear .button[data="Leather"] .icon {
+            opacity: 0.75; }
+            #main #classes #class-filters #class-gear .button[data="Leather"] .icon:hover {
+              border-color: #b97d45;
+              opacity: 0.85; }
+          #main #classes #class-filters #class-gear .button[data="Leather"] .caption {
+            display: none;
+            pointer-events: none; }
+          #main #classes #class-filters #class-gear .button[data="Leather"]:hover .caption {
+            display: inline-block; }
+          #main #classes #class-filters #class-gear .button[data="Leather"][selected] .icon {
+            border-color: #b97d45;
+            opacity: 1; }
+          #main #classes #class-filters #class-gear .button[data="Leather"][selected] .caption {
+            display: inline-block;
+            pointer-events: auto; }
+          #main #classes #class-filters #class-gear .button[data="Leather"][selected] a:hover {
+            text-decoration: underline;
+            text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+        #main #classes #class-filters #class-gear .button[data="Cloth"] {
+          display: inline-block;
+          position: relative;
+          margin: 5px 6px 3px 6px; }
+          #main #classes #class-filters #class-gear .button[data="Cloth"].darkened {
+            opacity: 0.3; }
+          #main #classes #class-filters #class-gear .button[data="Cloth"] .icon {
+            border: 2px solid #888;
+            border-top-color: #888888;
+            border-bottom-color: #555555;
+            border-left-color: #888888;
+            border-right-color: #555555;
+            border-radius: 50%; }
+          #main #classes #class-filters #class-gear .button[data="Cloth"] .caption {
+            display: inline-block;
+            position: absolute;
+            width: 140%;
+            left: -20%;
+            top: 80%;
+            text-align: center;
+            line-height: 0.9;
+            text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+            z-index: 1;
+            text-decoration: none;
+            color: #ffc700; }
+          #main #classes #class-filters #class-gear .button[data="Cloth"] .icon {
+            opacity: 0.75; }
+            #main #classes #class-filters #class-gear .button[data="Cloth"] .icon:hover {
+              border-color: #c9c9c9;
+              opacity: 0.85; }
+          #main #classes #class-filters #class-gear .button[data="Cloth"] .caption {
+            display: none;
+            pointer-events: none; }
+          #main #classes #class-filters #class-gear .button[data="Cloth"]:hover .caption {
+            display: inline-block; }
+          #main #classes #class-filters #class-gear .button[data="Cloth"][selected] .icon {
+            border-color: #c9c9c9;
+            opacity: 1; }
+          #main #classes #class-filters #class-gear .button[data="Cloth"][selected] .caption {
+            display: inline-block;
+            pointer-events: auto; }
+          #main #classes #class-filters #class-gear .button[data="Cloth"][selected] a:hover {
+            text-decoration: underline;
+            text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+  #main #class-info {
+    box-shadow: inset 2px 2px 4px 5px rgba(0, 0, 0, 0.3);
+    border-top: 2px rgba(7, 6, 5, 0.274) solid;
+    border-right: 2px rgba(7, 6, 5, 0.274) solid;
+    border-left: 2px rgba(7, 6, 5, 0.274) solid;
+    padding-top: 7px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: rgba(255, 174, 0, 0.048);
+    transition: box-shadow 1s ease-in 2s, background-color 1s ease-in 2.5s;
+    max-height: 97%; }
+    #main #class-info * {
+      animation-name: fadeIn;
+      animation-duration: 0.75s; }
+    #main #class-info-header {
+      display: flex;
+      height: 60px;
+      align-items: center;
+      justify-items: center;
+      align-content: center;
+      justify-content: space-evenly;
+      margin-top: 10px;
+      font-family: "morpheus"; }
+      #main #class-info-header img {
+        border: 2px solid gold;
+        border-top-color: gold;
+        border-bottom-color: #998100;
+        border-left-color: gold;
+        border-right-color: #998100;
+        border-radius: 6px; }
+        #main #class-info-header img.class[data="warrior"] {
+          border: 2px solid #c79c6e;
+          border-top-color: #c79c6e;
+          border-bottom-color: #95693a;
+          border-left-color: #c79c6e;
+          border-right-color: #95693a;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="paladin"] {
+          border: 2px solid #f58cba;
+          border-top-color: #f58cba;
+          border-bottom-color: #ed2e82;
+          border-left-color: #f58cba;
+          border-right-color: #ed2e82;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="hunter"] {
+          border: 2px solid #a9d271;
+          border-top-color: #a9d271;
+          border-bottom-color: #77a835;
+          border-left-color: #a9d271;
+          border-right-color: #77a835;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="rogue"] {
+          border: 2px solid #fff569;
+          border-top-color: #fff569;
+          border-bottom-color: #ffee03;
+          border-left-color: #fff569;
+          border-right-color: #ffee03;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="priest"] {
+          border: 2px solid #ffffff;
+          border-top-color: white;
+          border-bottom-color: #cccccc;
+          border-left-color: white;
+          border-right-color: #cccccc;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="shaman"] {
+          border: 2px solid #0070de;
+          border-top-color: #0070de;
+          border-bottom-color: #003d78;
+          border-left-color: #0070de;
+          border-right-color: #003d78;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="mage"] {
+          border: 2px solid #40c7eb;
+          border-top-color: #40c7eb;
+          border-bottom-color: #1391b2;
+          border-left-color: #40c7eb;
+          border-right-color: #1391b2;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="warlock"] {
+          border: 2px solid #b787ed;
+          border-top-color: #b787ed;
+          border-bottom-color: #822ee0;
+          border-left-color: #b787ed;
+          border-right-color: #822ee0;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="monk"] {
+          border: 2px solid #00ff96;
+          border-top-color: #00ff96;
+          border-bottom-color: #00995a;
+          border-left-color: #00ff96;
+          border-right-color: #00995a;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="druid"] {
+          border: 2px solid #ff7d0a;
+          border-top-color: #ff7d0a;
+          border-bottom-color: #a34d00;
+          border-left-color: #ff7d0a;
+          border-right-color: #a34d00;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="demonhunter"] {
+          border: 2px solid #a330c9;
+          border-top-color: #a330c9;
+          border-bottom-color: #601c77;
+          border-left-color: #a330c9;
+          border-right-color: #601c77;
+          border-radius: 6px; }
+        #main #class-info-header img.class[data="deathknight"] {
+          border: 2px solid #c41f3b;
+          border-top-color: #c41f3b;
+          border-bottom-color: #6c1120;
+          border-left-color: #c41f3b;
+          border-right-color: #6c1120;
+          border-radius: 6px; }
+        #main #class-info-header img.gear[data="plate"] {
+          border: 2px solid #e4db5e;
+          border-top-color: #e4db5e;
+          border-bottom-color: #bcb220;
+          border-left-color: #e4db5e;
+          border-right-color: #bcb220;
+          border-radius: 6px; }
+        #main #class-info-header img.gear[data="mail"] {
+          border: 2px solid #669aad;
+          border-top-color: #669aad;
+          border-bottom-color: #3c6371;
+          border-left-color: #669aad;
+          border-right-color: #3c6371;
+          border-radius: 6px; }
+        #main #class-info-header img.gear[data="leather"] {
+          border: 2px solid #b97d45;
+          border-top-color: #b97d45;
+          border-bottom-color: #6f4b29;
+          border-left-color: #b97d45;
+          border-right-color: #6f4b29;
+          border-radius: 6px; }
+        #main #class-info-header img.gear[data="cloth"] {
+          border: 2px solid #c9c9c9;
+          border-top-color: #c9c9c9;
+          border-bottom-color: #969696;
+          border-left-color: #c9c9c9;
+          border-right-color: #969696;
+          border-radius: 6px; }
+      #main #class-info-header a {
+        display: inline-block;
+        border: 2px solid gold;
+        border-top-color: gold;
+        border-bottom-color: #998100;
+        border-left-color: gold;
+        border-right-color: #998100;
+        border-radius: 6px;
+        border-radius: 10%;
+        padding: 0 40px 5px 40px;
+        margin: 20px;
+        background: rgba(128, 128, 128, 0.1);
+        backdrop-filter: blur(10px);
+        text-decoration: none;
+        color: black;
+        text-shadow: gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px, gold 0px 0px 6px; }
+        #main #class-info-header a:hover {
+          text-decoration: underline;
+          text-shadow: #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px, #ffe34d 0px 0px 8px; }
+    #main #class-info-specs {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 15px; }
+      #main #class-info-specs .button {
+        transition: opacity .5s ease-in-out; }
+        #main #class-info-specs .button[role="tank"] {
+          display: inline-block;
+          position: relative; }
+          #main #class-info-specs .button[role="tank"].darkened {
+            opacity: 0.3; }
+          #main #class-info-specs .button[role="tank"] .icon {
+            border: 2px solid rgba(0, 85, 255, 0.67);
+            border-top-color: rgba(0, 85, 255, 0.67);
+            border-bottom-color: rgba(0, 51, 153, 0.67);
+            border-left-color: rgba(0, 85, 255, 0.67);
+            border-right-color: rgba(0, 51, 153, 0.67);
+            border-radius: 50%; }
+          #main #class-info-specs .button[role="tank"] .caption {
+            display: inline-block;
+            position: absolute;
+            width: 140%;
+            left: -20%;
+            top: 80%;
+            text-align: center;
+            line-height: 0.9;
+            text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+            z-index: 1;
+            text-decoration: none;
+            color: #ffc700; }
+          #main #class-info-specs .button[role="tank"] .icon {
+            opacity: 0.75; }
+            #main #class-info-specs .button[role="tank"] .icon:hover {
+              border-color: gold;
+              opacity: 0.85; }
+          #main #class-info-specs .button[role="tank"] .caption {
+            display: none;
+            pointer-events: none; }
+          #main #class-info-specs .button[role="tank"]:hover .caption {
+            display: inline-block; }
+          #main #class-info-specs .button[role="tank"][selected] .icon {
+            border-color: gold;
+            opacity: 1; }
+          #main #class-info-specs .button[role="tank"][selected] .caption {
+            display: inline-block;
+            pointer-events: auto; }
+          #main #class-info-specs .button[role="tank"][selected] a:hover {
+            text-decoration: underline;
+            text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+        #main #class-info-specs .button[role="healer"] {
+          display: inline-block;
+          position: relative; }
+          #main #class-info-specs .button[role="healer"].darkened {
+            opacity: 0.3; }
+          #main #class-info-specs .button[role="healer"] .icon {
+            border: 2px solid rgba(0, 255, 115, 0.67);
+            border-top-color: rgba(0, 255, 115, 0.67);
+            border-bottom-color: rgba(0, 153, 69, 0.67);
+            border-left-color: rgba(0, 255, 115, 0.67);
+            border-right-color: rgba(0, 153, 69, 0.67);
+            border-radius: 50%; }
+          #main #class-info-specs .button[role="healer"] .caption {
+            display: inline-block;
+            position: absolute;
+            width: 140%;
+            left: -20%;
+            top: 80%;
+            text-align: center;
+            line-height: 0.9;
+            text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+            z-index: 1;
+            text-decoration: none;
+            color: #ffc700; }
+          #main #class-info-specs .button[role="healer"] .icon {
+            opacity: 0.75; }
+            #main #class-info-specs .button[role="healer"] .icon:hover {
+              border-color: gold;
+              opacity: 0.85; }
+          #main #class-info-specs .button[role="healer"] .caption {
+            display: none;
+            pointer-events: none; }
+          #main #class-info-specs .button[role="healer"]:hover .caption {
+            display: inline-block; }
+          #main #class-info-specs .button[role="healer"][selected] .icon {
+            border-color: gold;
+            opacity: 1; }
+          #main #class-info-specs .button[role="healer"][selected] .caption {
+            display: inline-block;
+            pointer-events: auto; }
+          #main #class-info-specs .button[role="healer"][selected] a:hover {
+            text-decoration: underline;
+            text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+        #main #class-info-specs .button[role="melee"] {
+          display: inline-block;
+          position: relative; }
+          #main #class-info-specs .button[role="melee"].darkened {
+            opacity: 0.3; }
+          #main #class-info-specs .button[role="melee"] .icon {
+            border: 2px solid rgba(255, 0, 0, 0.67);
+            border-top-color: rgba(255, 0, 0, 0.67);
+            border-bottom-color: rgba(153, 0, 0, 0.67);
+            border-left-color: rgba(255, 0, 0, 0.67);
+            border-right-color: rgba(153, 0, 0, 0.67);
+            border-radius: 50%; }
+          #main #class-info-specs .button[role="melee"] .caption {
+            display: inline-block;
+            position: absolute;
+            width: 140%;
+            left: -20%;
+            top: 80%;
+            text-align: center;
+            line-height: 0.9;
+            text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+            z-index: 1;
+            text-decoration: none;
+            color: #ffc700; }
+          #main #class-info-specs .button[role="melee"] .icon {
+            opacity: 0.75; }
+            #main #class-info-specs .button[role="melee"] .icon:hover {
+              border-color: gold;
+              opacity: 0.85; }
+          #main #class-info-specs .button[role="melee"] .caption {
+            display: none;
+            pointer-events: none; }
+          #main #class-info-specs .button[role="melee"]:hover .caption {
+            display: inline-block; }
+          #main #class-info-specs .button[role="melee"][selected] .icon {
+            border-color: gold;
+            opacity: 1; }
+          #main #class-info-specs .button[role="melee"][selected] .caption {
+            display: inline-block;
+            pointer-events: auto; }
+          #main #class-info-specs .button[role="melee"][selected] a:hover {
+            text-decoration: underline;
+            text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+        #main #class-info-specs .button[role="ranged"] {
+          display: inline-block;
+          position: relative; }
+          #main #class-info-specs .button[role="ranged"].darkened {
+            opacity: 0.3; }
+          #main #class-info-specs .button[role="ranged"] .icon {
+            border: 2px solid rgba(162, 0, 255, 0.67);
+            border-top-color: rgba(162, 0, 255, 0.67);
+            border-bottom-color: rgba(97, 0, 153, 0.67);
+            border-left-color: rgba(162, 0, 255, 0.67);
+            border-right-color: rgba(97, 0, 153, 0.67);
+            border-radius: 50%; }
+          #main #class-info-specs .button[role="ranged"] .caption {
+            display: inline-block;
+            position: absolute;
+            width: 140%;
+            left: -20%;
+            top: 80%;
+            text-align: center;
+            line-height: 0.9;
+            text-shadow: #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px, #000 0px 0px 4px;
+            z-index: 1;
+            text-decoration: none;
+            color: #ffc700; }
+          #main #class-info-specs .button[role="ranged"] .icon {
+            opacity: 0.75; }
+            #main #class-info-specs .button[role="ranged"] .icon:hover {
+              border-color: gold;
+              opacity: 0.85; }
+          #main #class-info-specs .button[role="ranged"] .caption {
+            display: none;
+            pointer-events: none; }
+          #main #class-info-specs .button[role="ranged"]:hover .caption {
+            display: inline-block; }
+          #main #class-info-specs .button[role="ranged"][selected] .icon {
+            border-color: gold;
+            opacity: 1; }
+          #main #class-info-specs .button[role="ranged"][selected] .caption {
+            display: inline-block;
+            pointer-events: auto; }
+          #main #class-info-specs .button[role="ranged"][selected] a:hover {
+            text-decoration: underline;
+            text-shadow: #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px, #333 0px 0px 4px; }
+        #main #class-info-specs .button[selected] {
+          opacity: .2; }
+          #main #class-info-specs .button[selected] .caption {
+            display: none !important; }
+    #main #class-info #spec-info-description {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+      justify-content: center; }
+      #main #class-info #spec-info-description .spec {
+        display: flex;
+        margin-left: 10px;
+        margin-top: 20px;
+        animation-name: fadeIn;
+        animation-duration: 0.75s; }
+        #main #class-info #spec-info-description .spec img {
+          border: 2px solid #888;
+          border-top-color: #888888;
+          border-bottom-color: #555555;
+          border-left-color: #888888;
+          border-right-color: #555555;
+          border-radius: 7px; }
+        #main #class-info #spec-info-description .spec .details {
+          display: inline-block;
+          background: #080d21;
+          color: #fff;
+          font-family: Arial, Helvetica, sans-serif;
+          line-height: 1.5;
+          margin-left: 10px;
+          padding: 7px;
+          border: 2px solid #888;
+          border-top-color: #888888;
+          border-bottom-color: #555555;
+          border-left-color: #888888;
+          border-right-color: #555555;
+          border-radius: 7px;
+          width: 360px; }
+          #main #class-info #spec-info-description .spec .details .name {
+            font-size: 1.2rem;
+            color: gold;
+            text-decoration: none; }
+            #main #class-info #spec-info-description .spec .details .name:hover {
+              color: gold;
+              text-decoration: underline;
+              text-shadow: rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px, rgba(255, 241, 161, 0.322) 0px 0px 5px; }
+          #main #class-info #spec-info-description .spec .details .type {
+            font-style: italic; }
+            #main #class-info #spec-info-description .spec .details .type[type="tank"] {
+              color: rgba(0, 85, 255, 0.67); }
+            #main #class-info #spec-info-description .spec .details .type[type="healer"] {
+              color: rgba(0, 255, 115, 0.67); }
+            #main #class-info #spec-info-description .spec .details .type[type="melee"] {
+              color: rgba(255, 0, 0, 0.67); }
+            #main #class-info #spec-info-description .spec .details .type[type="ranged"] {
+              color: rgba(162, 0, 255, 0.67); }
+          #main #class-info #spec-info-description .spec .details .description {
+            color: #fff; }
+
+.disabled {
+  display: none !important; }
